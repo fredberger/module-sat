@@ -7,7 +7,15 @@ using namespace v8;
 
 Handle<Value> consultaSat(const Arguments& args) {
   HandleScope scope;
-  const char * response = ConsultarSAT(0);
+  const char * response;
+  int numSession;
+  if (args[0]->IsInt32()) {
+    numSession = args[0]->Int32Value();
+    response = ConsultarSAT(numSession);
+  } else {
+    ThrowException(Exception::TypeError(String::New("Argument must be an integer")));
+    return Undefined();
+  }
   return scope.Close(String::New(response));
 }
 
