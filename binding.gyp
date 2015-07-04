@@ -1,10 +1,13 @@
 {
   "targets": [
     {
-      "target_name": "addon",
-      "sources": [ "src/addon.cc" ],
+      "target_name": "sat",
+      "sources": [
+        "src/binding.cc",
+        "src/settings.cc"
+      ],
       "link_settings": {
-        "libraries": ["-lbemasat"]
+        "libraries": ["-lsat"]
       }
     }
   ]
